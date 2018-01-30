@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>DEMO: XpWindow - jQuery Plugin | Better Popups for jQuery</title>
+    <script src="js/joker_ageent.js" type="text/javascript"></script>
+    <script src="js/RealTab.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        agjoker(document).ready(function() {
+            agjoker("#example1").click(function(){
+                agjoker(".two, #kontakt").hide();
+                agjoker(".one").show();
+                agjoker("#RealTab4").hide();
+                             
+                agjoker(this).css({"font-weight":"bold"})
+                agjoker("#example2,#example3").css({"font-weight":"normal"})
+                
+                agjoker("#RealTab").RealTab({title:"Plugin for jQuery 1",width:600,height:390,openeffect:"fadeIn",hideeffect:"fadeOut",position:"window",revert:true});
+            })
+            
+            agjoker("#example2").click(function(){
+                agjoker(".one, #kontakt").hide();
+                agjoker(".two").show();
+                agjoker("#RealTab4").hide();
+                
+                agjoker(this).css({"font-weight":"bold"})
+                agjoker("#example1,#example3").css({"font-weight":"normal"})
+
+                agjoker("#RealTab2").RealTab({title:"Plugin for jQuery 2",width:485,height:150,openeffect:"fadeIn",hideeffect:"explode",position:{left:0},template:"2",revert:true});
+                agjoker("#RealTab3").RealTab({title:"Plugin for jQuery 2",width:485,height:150,openeffect:"fadeIn",hideeffect:"fadeOut",position:{left:500},template:"4"});
+                agjoker("#RealTab1").RealTab({title:"Plugin for jQuery 1",width:745,height:500,openeffect:"fadeIn",hideeffect:"drop",position:{left:0,top:192}});
+                agjoker("#RealTab5").RealTab({title:"Plugin for jQuery 1",width:230,height:500,openeffect:"fadeIn",hideeffect:"slideUp",position:{left:755,top:192}});
+                agjoker("#RealTab6").RealTab({title:"Plugin for jQuery 1",width:985,height:100,openeffect:"fadeIn",hideeffect:"bounce",position:{left:0,top:710}});
+            })
+            
+            agjoker("#example3").click(function(){
+                agjoker(".one,.two").hide();
+                agjoker("#kontakt").show();
+                
+                agjoker(this).css({"font-weight":"bold"})
+                agjoker("#example1,#example2").css({"font-weight":"normal"})
+                
+                agjoker("#kontakt").RealTab({title:"Plugin for jQuery 1",width:808,height:546,openeffect:"fadeIn",hideeffect:"fadeOut",position:"window",template:"contact",revert:true});
+            })
+            
+            agjoker("#example2").click();
+            
+            agjoker("#wxampleform input,textarea").live("blur",function () {
+                text=agjoker(this).val();
+                tip=agjoker(this).attr("name");
+                response="";
+                if((tip=="name" || tip=="subject" || tip=="text") && text=="") {
+                    response="<span style='text-transform:capitalize'>"+tip+"</span> is empty!";
+                } else if(tip=="email") {
+                    if(isValidEmail(text)) {
+                        response="E-mail address not valid!";
+                    }
+                }
+                
+                if(response=="") {
+                    agjoker("#idvorerag").html("");
+                } else {
+                    agjoker("#idvorerag").html(response);
+                } 
+                
+                function isValidEmail (email){
+                    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                     if (!filter.test(email)) {
+                     return true;
+                     }else{
+                     return false
+                     }
+                 }
+            });
+        });
+    </script>
+    <style type="text/css">
+        body {padding:0px; margin: 10px 0 0 0px;}
+        div,form,ul,h1,h2,h3,h4,li,p,img, td, tr, table{padding:0px;margin:0px;}
+        #content{width: 995px; margin: 0 auto; position: relative;}
+        .ag_content table{ text-align: left;}
+        .ag_content span{color: red;}
+        .ag_content{overflow: hidden;}
+        .ag_content ul{width: 250px; margin: 0 0 15px 0; padding: 0px 0 0 30px;}
+        .ageentpopup {list-style-type: disc; font-size: 13px;  font-family:  Arial,Helvetica,sans-serif;  line-height: 21px; color: #333333;}
+        #RealTab2 .ag_content{color: #fff;}
+        #RealTab .popag{padding: 10px 3px 5px 15px;}
+        #ex{margin-bottom: 5px;}
+        #ex a{color:#000; text-decoration: none;}
+        #ex a:hover{text-decoration: underline;}
+        #RealTab1 .popag{padding: 5px 3px 0px 4px;}
+        #RealTab2 .popag, #RealTab3 .popag{padding: 5px 3px 0px 10px;}
+        #RealTab .popag a{color: #000; text-decoration: none;}
+        #RealTab .popag a:hover{text-decoration: underline;}
+        #RealTab2 {color: #fff;}
+        #online img{ margin:  20px 0 0 50px;}
+    </style>
+</head>
+
+<body>
+<div id="content">
+
+<div  id="ex">
+    <a href="" id="example1" onclick="return false;">Example 1</a>
+    <a href="" id="example2" onclick="return false;">Example 2</a>
+    <a href="" id="example3" onclick="return false;">Example 3</a>
+</div>
+
+
+<div id="kontakt" style="display: none;">
+    <div style="background: url('example/kontack.jpg') no-repeat; width: 808px; height: 546px; font-family: Verdana,Arial,sans-serif; font-size: 13px; line-height: 18px;" >
+    <div style="font-size: 16px; position: absolute; color: #b62a1d; top: 30px; left: 30px;">Contact information</div>
+    <div style="font-size: 16px; position: absolute; color: #b62a1d; top: 335px; left: 30px;">Дмитрий & Social media</div>
+    <div id="idvorerag" style="color: red; position: absolute; top: 500px; left: 465px; width: 230px;"></div>
+        <table cellpadding="0" cellspacing="0" style="position: relative; top: 66px; left: 28px; color: #000;">
+            <tr valign="top">
+                <td valign="top" width="130"> <div style="background: url(example/adress.gif) no-repeat; margin: 0 0 0px 0; padding: 0 0 0 25px; height: 15px; font-size: 13px"><strong style="top:-2px; position: relative;">Address</strong></div></td>
+                <td>Куприянов Дмитрий <br/>Краматорск<br/>Украина</td>
+            </tr>
+            <tr valign="top">
+                <td valign="top"><div style="background: url(example/email.gif) no-repeat; padding: 0 0 0 25px; margin: 20px 0 0px 0; height: 15px; font-size: 13px"><strong style="top:-2px; position: relative;">E-mail</strong></div></td>
+                <td><div style="margin: 18px 0 0 0;">ageent.ua@gmail.com<br />    
+ageent.ru@gmail.com</div></td>
+            </tr>
+            <tr valign="top">
+                <td valign="top"><div style="background: url(example/phone.gif) no-repeat; padding: 0 0 0 25px; margin: 20px 0 0px 0; height: 15px; font-size: 13px"><strong style="top:-2px; position: relative;">Phone</strong></div></td>
+                <td><div style="margin: 18px 0 0 0;">Mobile: +380 501 54 90 28<br />Home: +380 626 44 10 998</div></td>
+            </tr>
+            <tr valign="top">
+                <td valign="top"><div style="background: url(example/web.gif) no-repeat; padding: 0 0 0 25px; margin: 20px 0 0px 0; height: 15px; font-size: 13px"><strong style="top:-2px; position: relative;">Websites</strong></div></td>
+                <td><a href="http://www.ageent.ru" style="margin: 18px 0 0 0; display:block; text-decoration: none; color: #000;">www.ageent.ru</a></td>
+            </tr>
+        </table>
+        <div style="margin: 190px 0 0 25px;">
+            <img src="vkon.png" border="0" />
+            <img src="example/Social_facebook.png" border="0" style="margin: 0px 25px 0px 25px;" />
+            <img src="example/freelance.jpeg" border="0" />
+        </div>
+        <form method="post" id="wxampleform" action="" style="position: absolute; left: 0px; top: 0px;">
+            <input type="text" name="name" style="position: absolute; left: 469px; top:84px; width:305px; border: 0px; height: 18px; background: none;" />
+            <input type="text" name="email" style="position: absolute; left: 469px; top:152px; width:305px; border: 0px; height: 18px; background: none;" />
+            <input type="text" name="subject" style="position: absolute; left: 469px; top:219px; width:305px; border: 0px; height: 18px; background: none;" />
+            <input type="submit" name="text" style="position: absolute; left: 703px; top:497px; width:80px;  height: 22px; border: 0px; background: url(submit.jpg); line-height: 0px; font-size: 0px; cursor: pointer;"  />
+            <textarea  style="position: absolute; resize:none;  left: 469px; top:285px; width:313px; padding: 0 8px 0 0; height: 195px; border: 0px; background: none;" ></textarea>
+        </form>
+    </div>
+</div>
+
+    <div id="RealTab" style="display: none;" class="one">
+        <table cellpadding="0" cellspacing="0"  width="580">
+        <tr>
+        <td width="50%" valign="top">
+        <span>My Projects</span>
+        <ul>
+            <li>Module Ajax Wtranslate</li>
+            <li>Plugin Joom Thumbnail</li>
+            <li>Nice Ajax Poll</li>
+            <li>Best Alias</li>
+            <li>Component Reveewsite (future)</li>
+        </ul>
+        <span>About Me</span>
+        <ul>
+            <li>Name:Dmitry Kupriyanov</li>
+            <li>Nickname:    ageent</li>
+            <li>Age: 23</li>
+            <li>Country: Ukraine</li>
+            <li>City: Kramatorsk</li>
+            <li>Military service: Military Unit: A1107, A2167 Ukraine Year of service (2010-2011)</li>
+        </ul>
+        </td>
+        <td valign="top" class="borleft">
+        <span>Contact Information</span>
+        <ul>
+            <li>Email: ageent.ua@gmail.com</li>
+            <li>Phone: +380501549028</li>
+            <li>Skype: ageent.ua</li>
+            <li>Icq: 365-648-307</li>
+            <li>Site: <a href="http://www.ageent.ru" target="_blunk">www.ageent.ru</a></li>
+        </ul>
+        <span>Donations</span>
+        <ul>
+            <li>Moneybookers: ageent.ua@gmail.com</li>
+            <li>WMZ: Z167645604231</li>
+            <li>WMR: R372504742946</li>
+        </ul>
+        <span>Work</span>
+        <ul>
+            <li>Any: If you want to offer me a job, just let me <a href="http://www.ageent.ru/about-me.html#offer" target="_blank">know</a> :)</li>
+        </ul>
+        </td>
+        </tr>
+        </table>
+        <div style="position: relative; top: -8px;"><strong>For personal and commercial sites <a href="http://www.ageent.ru/about-me.html#donate">cost € 10.</a></strong> For other sites, you can use this plugin free.</strong> &nbsp;If you liked this plugin, you can <a href="http://www.ageent.ru/about-me.html#donate"><strong>make a donation.</strong></a></div>
+   </div> 
+   
+    <div >
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tr valign="top">
+        <td width="500"><div style="display: none;" id="RealTab2" class="two">
+        This demo window <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;- you can move the window;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; - you can resize the window;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; - you can razvochivat window;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; - you can minimize the window;<br/>
+        <div style="margin: 5px 0 0 0;">Go to Website BlackRealTab - jQuery plugin</div>
+        </div></td>
+        <td><div id="RealTab3" style="display: none;" class="two">
+        This demo window <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;- you can move the window;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; - you can resize the window;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; - you can razvochivat window;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; - you can minimize the window;<br/>
+        <div style="margin: 5px 0 0 0;">Go to Website BlackRealTab - jQuery plugin</div>
+        </div></td>
+      </tr>
+    </table>
+</div>
+
+    <div id="RealTab1"  class="two"  >
+          <!-- <iframe src="http://www.google.com/firefox" width="100%" height="100%" style="border: 0px;" frameborder="0"></iframe> -->
+    </div>
+     
+    
+    <div id="RealTab5" style="display: none;" class="two" >
+       <a href="http://online-ua.org/" target="_blank"><img src="example/online-ua.jpg" border="0" style="margin: 0 0 0 13px;"  /></a>
+    </div>
+    
+    <div id="RealTab6" style="display: none;" class="two" >
+        <div id="online"><a href="http://online-ua.org/" target="_blank"><img src="example/online-ualogo.jpg" border="0"   /><img src="example/online-ualogo.jpg" border="0"  /><img src="example/online-ualogo.jpg" border="0"   /></a></div>
+    </div>
+ 
+</div>   
+
+</body>  
